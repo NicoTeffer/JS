@@ -1,24 +1,27 @@
-var Tony = {
-  firstname: "Tony",
-  lastname: "Alicea",
-  address: {
-    street: "111 Main Street",
-    city: "New York",
-    state: "NY",
+var greet = "Hello!";
+var greet = "Hola!";
+
+console.log(greet);
+
+var english = {};
+var spanish = {};
+
+english.greet = "Hello!";
+spanish.greet = "Hola!";
+
+console.log(spanish);
+console.log(english);
+
+english.greetings = {};
+
+english.greetings.greet = "Hi!";
+
+console.log(english.greetings);
+
+var english = {
+  greetings: {
+    basic: "Sup!",
   },
 };
 
-function greet(person) {
-  console.log("Hi " + person.firstname);
-}
-
-greet(Tony);
-
-greet({
-  firstname: "Mary",
-  lastname: "Doe",
-});
-
-Tony.address2 = {
-  street: "333 Second Street",
-};
+console.log(english.greetings);
