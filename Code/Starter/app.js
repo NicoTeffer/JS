@@ -1,41 +1,42 @@
-var person = {
-  firstname: "john",
-  lastname: "doe",
-  getFullName: function () {
-    var fullName = this.firstname + " " + this.lastname;
-    return fullName;
-  },
-};
+// functional programming notes and lecture
 
-var logName = function (lang1, lang2) {
-  console.log("logged: " + this.getFullName());
-  console.log("Arguments: " + lang1 + " " + lang2);
-  console.log("------------------");
-};
+function mapForEach(arr, fn) {
+  var newArr = [];
+  for (var i = 0; i < arr.length; i++) {
+    newArr.push(fn(arr[i]));
+  }
 
-var logPersonName = logName.bind(person);
-
-logPersonName("en", "es");
-
-logName.call(person, "en", "es"); // invokes the function with certain parameters
-
-logName.apply(person, ["en", "es"]); // takes an array of parameters
-
-// function borrowing
-var person2 = {
-  firstname: "jane",
-  lastname: "doe",
-};
-
-console.log(person.getFullName.apply(person2));
-
-// function currying
-function multiply(a, b) {
-  return a * b;
+  return newArr;
 }
 
-var multiplyByTwo = multiply.bind(this, 2);
-console.log(multiplyByTwo(4));
+var arr1 = [1, 2, 3];
+console.log(arr1);
 
-var multiplyByFive = multiply.bind(this, 5);
-console.log(multiplyByFive(2));
+var arr2 = mapForEach(arr1, function (item) {
+  return item * 2;
+});
+console.log(arr2);
+
+var arr3 = mapForEach(arr1, function (item) {
+  return item > 2;
+});
+console.log(arr3);
+
+var checkPastLimit = function (limiter, item) {
+  return item > limiter;
+}.bind(this, 1);
+
+var arr4 = mapForEach(arr1, checkPastLimit);
+console.log(arr4);
+
+var checkPastLimitSimplified = function (limiter) {
+  return function (limiter, item) {
+    return item > limiter;
+  }.bind(this, limiter);
+};
+
+var arr5 = mapForEach(arr1, checkPastLimitSimplified(1));
+console.log(arr5);
+
+// NOTE: Functional programming should not mutate data, 
+// or just return a function and hand the method over
