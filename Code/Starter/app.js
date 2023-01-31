@@ -1,17 +1,12 @@
-function makeGreeting(language) {
-  return function (firstname, lastname) {
-    if (language === "en") {
-      console.log("Hello " + firstname + " " + lastname);
-    }
+function sayHiLater() {
 
-    if (language === "es") {
-      console.log("Hola " + firstname + " " + lastname);
+  var greeting = "Hi";
+
+  setTimeout(
+    function () {
+    console.log(greeting);
     }
-  };
+    , 3000);
 }
 
-var greetEnglish = makeGreeting("en");
-var greetSpanish = makeGreeting("es");
-
-greetEnglish("Nico","Teffer");
-greetSpanish("Nicola","Miller");
+sayHiLater();
