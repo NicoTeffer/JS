@@ -1,4 +1,4 @@
-// Prototype Lecture
+// Reflection Lecture
 
 var person = {
   firstname: "Default",
@@ -16,12 +16,25 @@ var john = {
 // DON'T DO THIS!
 
 john.__proto__ = person; // John inherit's from person
-console.log(john.getFullName());
-console.log(john.firstname);
+
+for (var prop in john) {
+  if (john.hasOwnProperty(prop)) {
+    console.log(prop + ": " + john[prop]);
+  }
+}
 
 var jane = {
-  firstname: "Jane",
+  address: "111 Main Str.",
+  getFormalFullName: function () {
+    return this.lastname + ", " + this.firstname;
+  },
 };
 
-jane.__proto__ = person; // Jane inherit's from person's Default lastname since it doesn't have a lastname
-console.log(jane.getFullName());
+var jim = {
+  getFirstName: function () {
+    return firstname;
+  },
+};
+
+_.extend(john, jane, jim);
+console.log(john);
