@@ -1,29 +1,28 @@
-// Initialization - Lecture
+// 'typeof' , 'instanceof', and Figuring Out What Something Is
 
-var people = [
-    {
-        // The "John" object
-        firstname: "John",
-        lastname: "Doe",
-        address: [
-            "111 Main St.",
-            "222 Third St."
-        ]
-    },
-    {
-        // The "Jane" object
-        firstname: "Jane",
-        lastname: "Doe",
-        address: [
-            "333 Main St.",
-            "444 Fifth St."
-        ],
-        greet: function () {
-            return "Hello";
-        }
-    }
-];
+var a = 3;
+console.log(typeof a);
 
-console.log(people[0]);
-console.log(people[1]);
-console.log(people[1].greet());
+var b = "Hello";
+console.log(typeof b);
+
+var c = {};
+console.log(typeof c);
+
+var d = [];
+console.log(typeof d); // weird!
+console.log(Object.prototype.toString.call(d)); // better!
+
+function Person(name) {
+    this.name = name;
+}
+
+var e = new Person("Jane");
+console.log(typeof e);
+console.log(e instanceof Person);
+
+console.log(typeof undefined); // makes sense
+console.log(typeof null); // a bug since, like forever... Null here is also an Object!! O.o
+
+var z = function (){};
+console.log(typeof z); // returns the typeof function! 1st class functions make it possible that u can see the type here!
