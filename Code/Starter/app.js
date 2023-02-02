@@ -15,7 +15,7 @@ var john = {
 
 // DON'T DO THIS!
 
-john.__proto__ = person; // John inherit's from person
+john.__proto__ = person; // John inherits from person
 
 for (var prop in john) {
   if (john.hasOwnProperty(prop)) {
