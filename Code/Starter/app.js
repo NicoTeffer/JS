@@ -1,40 +1,15 @@
-// Reflection Lecture
+// Function Constructors and how "new" works - Lecture
+function Person(firstName, lastName) { // Function that assigns a new Object with its code
 
-var person = {
-  firstname: "Default",
-  lastname: "Default",
-  getFullName: function () {
-    return this.firstname + " " + this.lastname;
-  },
-};
+    console.log(this);
+    this.firstName = firstName;
+    this.lastName = lastName;
+    console.log("This function is invoked!");
 
-var john = {
-  firstname: "John",
-  lastname: "Doe",
-};
-
-// DON'T DO THIS!
-
-john.__proto__ = person; // John inherits from person
-
-for (var prop in john) {
-  if (john.hasOwnProperty(prop)) {
-    console.log(prop + ": " + john[prop]);
-  }
 }
 
-var jane = {
-  address: "111 Main Str.",
-  getFormalFullName: function () {
-    return this.lastname + ", " + this.firstname;
-  },
-};
-
-var jim = {
-  getFirstName: function () {
-    return firstname;
-  },
-};
-
-_.extend(john, jane, jim);
+var john = new Person("John", "Doe");
 console.log(john);
+
+var jane = new Person("Jane", "Doe");
+console.log(jane);
