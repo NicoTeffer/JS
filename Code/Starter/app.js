@@ -1,28 +1,29 @@
-// ES6 and Classes
+// Initialization - Lecture
 
-class Person {
-    constructor(firstName, lastName) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+var people = [
+    {
+        // The "John" object
+        firstname: "John",
+        lastname: "Doe",
+        address: [
+            "111 Main St.",
+            "222 Third St."
+        ]
+    },
+    {
+        // The "Jane" object
+        firstname: "Jane",
+        lastname: "Doe",
+        address: [
+            "333 Main St.",
+            "444 Fifth St."
+        ],
+        greet: function () {
+            return "Hello";
+        }
     }
+];
 
-    greet() {
-        return "Hi " + this.firstName;
-    }
-}
-
-var john = new Person("John", "Doe");
-console.log(john);
-
-class InformalPerson extends Person {
-    constructor(firstName, lastName) {
-        super(firstName, lastName);
-    }
-
-    greet() {
-        return "Yo " + this.firstName;
-    }
-}
-
-var informalJohn = new InformalPerson("John", "Doe");
-console.log(informalJohn);
+console.log(people[0]);
+console.log(people[1]);
+console.log(people[1].greet());
