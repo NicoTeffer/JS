@@ -1,25 +1,24 @@
-// Function Constructors and "Prototype" - Lecture
-function Person(firstName, lastName) { // Function that assigns a new Object with its code
+// Built-in Function Constructors
+String.prototype.isLengthGreaterThan = function (limit) {
+    return this.length > limit;
+}
+console.log("\"John\".isLengthGreaterThan(3): " + "John".isLengthGreaterThan(3));
 
-    console.log(this);
-    this.firstName = firstName;
-    this.lastName = lastName;
-    console.log("This function is invoked!");
-    // Functions could be set also here, but it would add the functions for every Object created!
-    // Since this is a huge waste of memory space functions are passed via the prototype!
+Number.prototype.isPositive = function () {
+    return this > 0;
 }
 
-Person.prototype.getFullName = function () { // adding the function for object Person via prototype
-    return this.firstName + " " + this.lastName;
-}
+var randomNumber = 3;
+console.log("randomNumber.isPositive(): " + randomNumber.isPositive());
 
-var john = new Person("John", "Doe");
-console.log(john);
+var negativeNumber = -5;
+console.log("negativeNumber.isPositive(): " + negativeNumber.isPositive());
 
-var jane = new Person("Jane", "Doe");
-console.log(jane);
+// !! Dangerous Aside !! for using Built-in Function Constructors
+var a = 3;
+var b = new Number(3);
 
-Person.prototype.getFormalFullName = function () {
-    return this.lastName + ", " + this.firstName;
-}
-console.log(john.getFormalFullName());
+console.log(a == b);
+console.log(a === b);
+// It's dangerous to use Built-in Function Constructors for primitive's!
+
