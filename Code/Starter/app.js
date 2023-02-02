@@ -1,18 +1,5 @@
-// Strict Mode - Lecture
 
-"use strict";
+// Method chaining possible due to returning this; in the functions
+var q = $("ul.people li").addClass("newClass").removeClass("people");
+console.log(q);
 
-function logNewPerson (){
-    "use strict";
-
-    var person2;
-    persom2 ={};
-    console.log(persom2);
-}
-
-var person;
-
-persom = {};
-console.log(persom);
-console.log(person);
-logNewPerson();
