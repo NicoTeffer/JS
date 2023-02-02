@@ -1,24 +1,12 @@
-// Built-in Function Constructors
-String.prototype.isLengthGreaterThan = function (limit) {
-    return this.length > limit;
+// !! Dangerous Aside !! Arrays and for..in
+Array.prototype.myCustomFeature = "cool!";
+
+var array = ["John", "Jane", "Jim"]; // As an array is an Object every member of the array has its position as its property name
+
+for (var prop in array) {   // That's the reason why u can use [0] for accessing a property for example
+    console.log(prop + ": " + array[prop]);
 }
-console.log("\"John\".isLengthGreaterThan(3): " + "John".isLengthGreaterThan(3));
 
-Number.prototype.isPositive = function () {
-    return this > 0;
-}
+// But the fact that an array is an object means that there is a problem when u add via prototype as we see in the above log
 
-var randomNumber = 3;
-console.log("randomNumber.isPositive(): " + randomNumber.isPositive());
-
-var negativeNumber = -5;
-console.log("negativeNumber.isPositive(): " + negativeNumber.isPositive());
-
-// !! Dangerous Aside !! for using Built-in Function Constructors
-var a = 3;
-var b = new Number(3);
-
-console.log(a == b);
-console.log(a === b);
-// It's dangerous to use Built-in Function Constructors for primitive's!
-
+// Use instead for-i loops to solve this
