@@ -96,13 +96,7 @@ So you can just call a function as array values (so don't store the tip values i
 // Coding Challenge #2 - My Solution
 
 //1
-function calcTip(value) {
-    if (value >= 50 && value <= 300) {
-        return value * 0.15;
-    } else {
-        return value * 0.20;
-    }
-}
+calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.20;
 console.log(`Function test with 100: ${calcTip(100)}`);
 
 // 2
