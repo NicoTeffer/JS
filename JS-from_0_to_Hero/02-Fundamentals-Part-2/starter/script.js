@@ -1,9 +1,7 @@
 "use strict";
 
-function logger() {
-    console.log("My name is Nico");
-}
+let array = ["Michael", "Steven", "Peter"];
 
-logger();
+console.log(array);
 
 console.log("--------- End of Script-File ---------");
