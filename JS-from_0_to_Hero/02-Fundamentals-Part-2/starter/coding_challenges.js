@@ -100,15 +100,15 @@ calcTip = bill => bill >= 50 && bill <= 300 ? bill * 0.15 : bill * 0.20;
 console.log(`Function test with 100: ${calcTip(100)}`);
 
 // 2
-const bills = [125, 555, 44];
+let bills = [125, 555, 44];
 console.log(`Bills: ${bills}`);
 
 // 3
-const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
+let tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[2])];
 console.log(`Tips: ${tips}`);
 
 // 4 Bonus
-const total = [(bills[0] + tips[0]), (bills[1] + tips[1]), (bills[2] + tips[2])];
+let total = [(bills[0] + tips[0]), (bills[1] + tips[1]), (bills[2] + tips[2])];
 console.log(`Total: ${total}`);
 
 /*
@@ -155,7 +155,7 @@ const john = {
 console.log(mark.calcBMI());
 console.log(john.calcBMI());
 
-console.log(mark.bmi > john.bmi ? `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi}).`: `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi}).`);
+console.log(mark.bmi > john.bmi ? `${mark.fullName}'s BMI (${mark.bmi}) is higher than ${john.fullName}'s (${john.bmi}).` : `${john.fullName}'s BMI (${john.bmi}) is higher than ${mark.fullName}'s (${mark.bmi}).`);
 
 /*
 
@@ -167,8 +167,7 @@ Your tasks:
             1. Create an array 'bills' containing all 10 test bill values
             2. Create empty arrays for the tips and the totals ('tips' and 'totals')
             3. Use the 'calcTip' function we wrote before (no need to repeat) to calculate
-            tips and total values (bill + tip) for every bill value in the bills array. Use a for
-            loop to perform the 10 calculations!
+            tips and total values (bill + tip) for every bill value in the bills array. Use a for loop to perform the 10 calculations!
 
 Test data: 22, 295, 176, 440, 37, 105, 10, 1100, 86 and 52
 
@@ -186,5 +185,34 @@ Bonus:
         4.3. Call the function with the 'totals' array.
 */
 
+// Coding Challenge #4 - My Solution
+
+// 1
+bills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+
+// 2
+tips = [];
+total = [];
+
+// 3
+for (let value in bills) {
+    tips.push(calcTip(bills[value]));
+    total.push(calcTip(bills[value]) + bills[value]);
+}
+
+console.log(`tips: ${tips}`);
+console.log(`total: ${total}`);
+
+// 4
+function calcAverageBonus(arr) {
+    let x = 0;
+    for (let value in arr) {
+        x += arr[value];
+    }
+    return x / arr.length;
+}
+
+const result = calcAverageBonus(bills);
+console.log(result);
 
 console.log("--------- End of Coding challenge #3 ---------");
