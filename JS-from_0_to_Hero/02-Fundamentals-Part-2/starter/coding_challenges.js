@@ -212,7 +212,7 @@ function calcAverageBonus(arr) {
     return x / arr.length;
 }
 
-const result = calcAverageBonus(bills);
+const result = calcAverageBonus(total);
 console.log(result);
 
 console.log("--------- End of Coding challenge #3 ---------");
