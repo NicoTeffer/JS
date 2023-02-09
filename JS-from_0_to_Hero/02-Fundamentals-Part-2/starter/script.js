@@ -1,7 +1,13 @@
 "use strict";
 
-let array = ["Michael", "Steven", "Peter"];
+const jonas = {
+    firstName: "Jonas",
+    lastName: "Schmedtmann",
+    age: 46,
+    job: "teacher",
+    friends: ["Michael", "Peter", "Steven"]
+}
 
-console.log(array);
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}.`);
 
 console.log("--------- End of Script-File ---------");
