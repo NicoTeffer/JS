@@ -63,26 +63,14 @@ document.querySelector(".check").addEventListener("click", function () {
         setNumber(guess);
         setCssBg("#60b347");
         setCssWidth("30rem");
-    } else if (guess > rightNumber) {
-        if (score > 1) {
-            valueTooHigh();
-            lowerScore();
-            setScore(score);
-        } else {
-            gameOver();
-            lowerScore();
-            setScore(score);
-        }
-    } else if (guess < rightNumber) {
-        if (score > 1) {
-            valueTooLow();
-            lowerScore();
-            setScore(score);
-        } else {
-            gameOver();
-            lowerScore();
-            setScore(score);
-        }
+    } else if (guess !== rightNumber) {
+        guess > rightNumber ? valueTooHigh() : valueTooLow();
+        lowerScore();
+        setScore(score);
+    } else {
+        gameOver();
+        lowerScore();
+        setScore(score);
     }
 });
 
