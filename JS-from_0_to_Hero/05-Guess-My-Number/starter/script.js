@@ -1,61 +1,103 @@
 'use strict';       // STRICT MODE ENABLED
 
 // Random Number Generator (1 - 20)
-let rightNumber = Math.trunc(Math.random() * 20) + 1;
-console.log(rightNumber);
+function diceRoll() {
+    return Math.trunc(Math.random() * 20) + 1;
+}
 
-// Highscore implementation
+let rightNumber = diceRoll();
+
 let score = Number(document.querySelector(".score").textContent);
 let highScore = 0;
 
-// Start "guessing" implementation
-// Calls via Event-listener the function attached to the listener
+function editMessage(message) {
+    document.querySelector(".message").textContent = message;
+}
+
+function gameOver() {
+    editMessage("🤷‍♂️🤯😒 U lost the game!");
+}
+
+function valueTooHigh() {
+    editMessage("🤷‍♂️📈 Too high!");
+}
+
+function valueTooLow() {
+    editMessage("🤷‍♂️📉 Too low!");
+}
+
+function setScore(value) {
+    document.querySelector(".score").textContent = value;
+}
+
+function setHighscore(value) {
+    document.querySelector(".highscore").textContent = value;
+}
+
+function setNumber(value) {
+    document.querySelector(".number").textContent = value;
+}
+
+function lowerScore() {
+    score--;
+}
+
+function setCssBg(value) {
+    document.querySelector("body").style.backgroundColor = value;
+}
+
+function setCssWidth(value) {
+    document.querySelector(".number").style.width = value;
+}
+
 document.querySelector(".check").addEventListener("click", function () {
     const guess = Number(document.querySelector(".guess").value);
     if (!guess) {
-        document.querySelector(".message").textContent = "🙅 Please enter a number!";
+        editMessage("🙅 Please enter a number!");
     } else if (guess === rightNumber) {
-        document.querySelector(".message").textContent = "🎉🥳🪅 Correct Number!";
-        if (highScore < score) {
-            document.querySelector(".highscore").textContent = `${score}`;
+        editMessage("🎉🥳🪅 Correct Number!");
+        if (score > highScore) {
             highScore = score;
+            setHighscore(highScore);
         }
-        document.querySelector(".number").textContent = `${guess}`;
-        document.querySelector("body").style.backgroundColor = "#60b347";
-        document.querySelector(".number").style.width = "30rem";
+        setNumber(guess);
+        setCssBg("#60b347");
+        setCssWidth("30rem");
     } else if (guess > rightNumber) {
         if (score > 1) {
-            document.querySelector(".message").textContent = "🤷‍♂️📈 Too high!";
-            score--;
-            document.querySelector(".score").textContent = `${score}`;
+            valueTooHigh();
+            lowerScore();
+            setScore(score);
         } else {
-            document.querySelector(".message").textContent = "🤷‍♂️🤯😒 U lost the game!";
-            score--;
-            document.querySelector(".score").textContent = `${score}`;
+            gameOver();
+            lowerScore();
+            setScore(score);
         }
     } else if (guess < rightNumber) {
         if (score > 1) {
-            document.querySelector(".message").textContent = "🤷‍♂️📉 Too low!";
-            score--;
-            document.querySelector(".score").textContent = `${score}`;
+            valueTooLow();
+            lowerScore();
+            setScore(score);
         } else {
-            document.querySelector(".message").textContent = "🤷‍♂️🤯😒 U lost the game!";
-            score--;
-            document.querySelector(".score").textContent = `${score}`;
+            gameOver();
+            lowerScore();
+            setScore(score);
         }
     }
 });
 
-// Play again button implementation
-document.querySelector(".again").addEventListener("click", function () {
-    rightNumber = Math.trunc(Math.random() * 20) + 1;
-    console.log(rightNumber);
-    document.querySelector(".highscore").textContent = highScore;
-    document.querySelector(".score").textContent = "20";
-    document.querySelector(".number").textContent = "?";
-    document.querySelector(".message").textContent = "Start guessing...";
+function gameValueReset() {
+    setHighscore(highScore);
+    setScore("20");
+    setNumber("?");
+    editMessage("Start guessing...");
     document.querySelector(".guess").value = "";
-    document.querySelector("body").style.backgroundColor = "#222";
-    document.querySelector(".number").style.width = "15rem";
+    setCssBg("#222");
+    setCssWidth("15rem");
     score = 20;
+}
+
+document.querySelector(".again").addEventListener("click", function () {
+    rightNumber = diceRoll();
+    gameValueReset();
 });
