@@ -6,7 +6,6 @@ console.log(rightNumber);
 
 // Highscore implementation
 let score = Number(document.querySelector(".score").textContent);
-console.log(score);
 let highScore = 0;
 
 // Start "guessing" implementation
@@ -17,8 +16,10 @@ document.querySelector(".check").addEventListener("click", function () {
         document.querySelector(".message").textContent = "🙅 Please enter a number!";
     } else if (guess === rightNumber) {
         document.querySelector(".message").textContent = "🎉🥳🪅 Correct Number!";
-        document.querySelector(".highscore").textContent = `${score}`;
-        highScore = score;
+        if (highScore < score) {
+            document.querySelector(".highscore").textContent = `${score}`;
+            highScore = score;
+        }
         document.querySelector(".number").textContent = `${guess}`;
         document.querySelector("body").style.backgroundColor = "#60b347";
         document.querySelector(".number").style.width = "30rem";
@@ -53,7 +54,7 @@ document.querySelector(".again").addEventListener("click", function () {
     document.querySelector(".score").textContent = "20";
     document.querySelector(".number").textContent = "?";
     document.querySelector(".message").textContent = "Start guessing...";
-    document.querySelector(".guess").textContent = "";
+    document.querySelector(".guess").value = "";
     document.querySelector("body").style.backgroundColor = "#222";
     document.querySelector(".number").style.width = "15rem";
     score = 20;
