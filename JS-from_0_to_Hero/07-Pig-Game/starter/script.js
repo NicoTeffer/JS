@@ -24,9 +24,11 @@ function reset() {
     finalScore_1 = 0;
     currentScore_0 = 0;
     currentScore_1 = 0;
-    document.querySelector(".player").classList.remove("player--winner");
+    document.querySelector(".player--0").classList.remove("player--winner");
+    document.querySelector(".player--1").classList.remove("player--winner");
     document.querySelector(".player").classList.remove("player--active");
     document.querySelector(".player--0").classList.add("player--active");
+    document.querySelector(".modal").classList.add("hidden");
 }
 
 reset();
@@ -76,6 +78,10 @@ btnHold.addEventListener("click", function () {
             current0El.textContent = currentScore_0;
             if (finalScore_0 >= 100) {
                 document.querySelector(".player--0").classList.add("player--winner");
+                document.querySelector(".modal").classList.remove("hidden");
+                document.querySelector(".winner-number").textContent= "1";
+                document.querySelector(".text-winner-number").textContent= "1";
+                document.querySelector(".winning-score").textContent= finalScore_0;
             }
         } else {
             finalScore_1 += currentScore_1;
@@ -86,6 +92,10 @@ btnHold.addEventListener("click", function () {
             current1El.textContent = currentScore_1;
             if (finalScore_1 >= 100) {
                 document.querySelector(".player--1").classList.add("player--winner");
+                document.querySelector(".modal").classList.remove("hidden");
+                document.querySelector(".winner-number").textContent= "2";
+                document.querySelector(".text-winner-number").textContent= "2";
+                document.querySelector(".winning-score").textContent= finalScore_1;
             }
         }
     }
