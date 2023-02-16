@@ -165,3 +165,8 @@ main {
   font-weight: 700;
   color: #c7365f;
 }
+
+/* CREATED A CLASS FOR HIDDEN ELEMENTS */
+.hidden {
+  display: none;
+}
