@@ -17,18 +17,22 @@ let finalScore_0,
     currentScore_1 = 0;
 
 function reset() {
-    score0El.textContent = "0";
-    score1El.textContent = "0";
-    diceEl.classList.add("hidden");
     finalScore_0 = 0;
     finalScore_1 = 0;
     currentScore_0 = 0;
     currentScore_1 = 0;
+    score0El.textContent = "0";
+    score1El.textContent = "0";
+    current0El.textContent = currentScore_0;
+    current1El.textContent = currentScore_1;
+    diceEl.classList.add("hidden");
     document.querySelector(".player--0").classList.remove("player--winner");
     document.querySelector(".player--1").classList.remove("player--winner");
-    document.querySelector(".player").classList.remove("player--active");
-    document.querySelector(".player--0").classList.add("player--active");
+    document.querySelector(".player--0").classList.remove("player--active");
+    document.querySelector(".player--1").classList.remove("player--active");
     document.querySelector(".modal").classList.add("hidden");
+    document.querySelector(".player--0").classList.add("player--active");
+
 }
 
 reset();
@@ -79,9 +83,9 @@ btnHold.addEventListener("click", function () {
             if (finalScore_0 >= 100) {
                 document.querySelector(".player--0").classList.add("player--winner");
                 document.querySelector(".modal").classList.remove("hidden");
-                document.querySelector(".winner-number").textContent= "1";
-                document.querySelector(".text-winner-number").textContent= "1";
-                document.querySelector(".winning-score").textContent= finalScore_0;
+                document.querySelector(".winner-number").textContent = "1";
+                document.querySelector(".text-winner-number").textContent = "1";
+                document.querySelector(".winning-score").textContent = finalScore_0;
             }
         } else {
             finalScore_1 += currentScore_1;
@@ -93,9 +97,9 @@ btnHold.addEventListener("click", function () {
             if (finalScore_1 >= 100) {
                 document.querySelector(".player--1").classList.add("player--winner");
                 document.querySelector(".modal").classList.remove("hidden");
-                document.querySelector(".winner-number").textContent= "2";
-                document.querySelector(".text-winner-number").textContent= "2";
-                document.querySelector(".winning-score").textContent= finalScore_1;
+                document.querySelector(".winner-number").textContent = "2";
+                document.querySelector(".text-winner-number").textContent = "2";
+                document.querySelector(".winning-score").textContent = finalScore_1;
             }
         }
     }
